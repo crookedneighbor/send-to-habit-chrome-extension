@@ -1,0 +1,21 @@
+.send-to-habitica-msg {
+  z-index: 999999999999;
+  position: fixed;
+  top: -200px;
+  right: 20px;
+  width: 170px;
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 1s;
+}
+
+.send-to-habitica-msg-error {
+  background: #e51c23;
+}
+
+.send-to-habitica-msg-success {
+  background: #4caf50;
+}
