@@ -1,0 +1,4 @@
+--colors
+--reporter spec
+--compilers js:babel-core/register
+--require ./test/helpers/globals.helper
