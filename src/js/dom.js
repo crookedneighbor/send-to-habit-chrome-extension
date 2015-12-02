@@ -1,6 +1,5 @@
 export function createKeyListener (options = {}) {
-  let { habitica, task } = options;
-  let keys = options.keys || [];
+  let { habitica, task, keys = [] } = options;
 
   let altKey = 18;
   let shiftKey = 16;
