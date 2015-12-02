@@ -1,24 +1,11 @@
-extends ./options-layout.jade
+extends ./options/layout.jade
 
 block content
   form.form-horizontal
     .form-group.text-center
       h4 Habitica Settings
 
-    .form-group
-      label.control-label.col-sm-2(for='uuid') UUID:
-      .col-sm-10
-        input#uuid.form-control(type='text' name='uuid')
-
-    .form-group
-      label.control-label.col-sm-2(for='token') API Token:
-      .col-sm-10
-        input#token.form-control(type='text' name='token')
-
-    .form-group
-      label.control-label.col-sm-2(for='api-endpoint') Habitica URL:
-      .col-sm-10
-        input#api-endpoint.form-control(type='text' name='api-endpoint')
+    include ./options/_login-with-uuid.jade
 
     .from-group
       .col-sm-offset-8.col-sm-4
