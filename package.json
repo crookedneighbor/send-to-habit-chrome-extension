@@ -4,7 +4,10 @@
   "description": "Unofficial Chrome extension for sending todos to habitica from web pages",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "build": "gulp build",
+    "build:watch": "gulp build:watch",
+    "lint": "gulp lint",
+    "test": "gulp lint && mocha"
   },
   "author": "Blade Barringer <blade@crookedneighbor.com>",
   "license": "ISC",
