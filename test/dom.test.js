@@ -2,6 +2,7 @@ import {
   createKeyListener,
   addFunctionToKeyEvents,
   displayMessage,
+  findElement,
 } from '../src/js/dom';
 
 describe('dom', () => {
@@ -269,6 +270,23 @@ describe('dom', () => {
         clock.tick(1);
         expect(element.remove).to.be.calledOnce;
       });
+    });
+  });
+
+  describe('#findElement', () => {
+    let dom;
+
+    beforeEach(() => {
+      dom = {
+        querySelector: sinon.stub(),
+      }
+    });
+
+    it('finds element by query selector', () => {
+      findElement('#id', dom);
+
+      expect(dom.querySelector).to.be.calledOnce;
+      expect(dom.querySelector).to.be.calledWith('#id');
     });
   });
 });

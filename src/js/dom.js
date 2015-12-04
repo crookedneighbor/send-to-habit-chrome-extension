@@ -57,6 +57,10 @@ export function displayMessage (err, successMsg, dom = document) {
   });
 }
 
+export function findElement (cssSelector, dom = document) {
+  return dom.querySelector(cssSelector);
+}
+
 function _makeElementAppear (element) {
   element.style.top = '20px';
 }
