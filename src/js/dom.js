@@ -32,7 +32,9 @@ export function displayMessage (err, successMsg, dom = document) {
 
   if (err) {
     message.classList.add('send-to-habitica-msg-error');
-    message.innerText = `ERROR: ${err.text}`;
+
+    let text = err.text ? err.text : JSON.stringify(err);
+    message.innerText = `ERROR: ${text}`;
   } else {
     message.classList.add('send-to-habitica-msg-success');
     message.innerText = successMsg;

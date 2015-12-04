@@ -177,6 +177,18 @@ describe('dom', () => {
         expect(element.innerText).to.eql('ERROR: some error');
       });
 
+      it('includes full error if there is no text attribute', () => {
+        displayMessage({notText: 'some error'}, null, dom);
+
+        expect(element.innerText).to.eql('ERROR: {"notText":"some error"}');
+      });
+
+      it('displays text if no error object passed in', () => {
+        displayMessage('some text only error', null, dom);
+
+        expect(element.innerText).to.eql('ERROR: "some text only error"');
+      });
+
       it('applies msg classes', () => {
         displayMessage({text: 'some error'}, null, dom);
 
