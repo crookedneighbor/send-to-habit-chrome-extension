@@ -189,6 +189,12 @@ describe('dom', () => {
         expect(element.innerText).to.eql('ERROR: "some text only error"');
       });
 
+      it('skips messsage display if error includes a silent flag', () => {
+        displayMessage({text: 'some text only error', silent: true }, null, dom);
+
+        expect(element.innerText).to.not.exist;
+      });
+
       it('applies msg classes', () => {
         displayMessage({text: 'some error'}, null, dom);
 

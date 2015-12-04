@@ -26,6 +26,8 @@ export function addFunctionToKeyEvents (fn, dom = document) {
 }
 
 export function displayMessage (err, successMsg, dom = document) {
+  if (err && err.silent) return;
+
   let message = dom.createElement('div');
 
   message.classList.add('send-to-habitica-msg');
