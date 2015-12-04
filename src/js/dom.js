@@ -26,6 +26,7 @@ export function addFunctionToKeyEvents (fn, dom = document) {
 }
 
 export function displayMessage (err, successMsg, dom = document) {
+  console.log(err);
   if (err && err.silent) return;
 
   let message = dom.createElement('div');
@@ -63,6 +64,18 @@ export function displayMessage (err, successMsg, dom = document) {
 
 export function findElement (cssSelector, dom = document) {
   return dom.querySelector(cssSelector);
+}
+
+export function findElements (cssSelector, dom = document) {
+  let domElements = dom.querySelectorAll(cssSelector);
+  let elements = [];
+
+  for (let i = 0; i < domElements.length; i++) {
+    let node = domElements[i];
+    elements.push(node);
+  }
+
+  return elements;
 }
 
 function _makeElementAppear (element) {

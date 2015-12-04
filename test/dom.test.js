@@ -3,6 +3,7 @@ import {
   addFunctionToKeyEvents,
   displayMessage,
   findElement,
+  findElements,
 } from '../src/js/dom';
 
 describe('dom', () => {
@@ -305,6 +306,33 @@ describe('dom', () => {
 
       expect(dom.querySelector).to.be.calledOnce;
       expect(dom.querySelector).to.be.calledWith('#id');
+    });
+  });
+
+  describe('#findElements', () => {
+    let dom;
+
+    beforeEach(() => {
+      dom = {
+        querySelectorAll: sinon.stub().returns([
+          'a node',
+          'another node',
+        ]),
+      }
+    });
+
+    it('finds elements by query selector', () => {
+      findElements('.foo', dom);
+
+      expect(dom.querySelectorAll).to.be.calledOnce;
+      expect(dom.querySelectorAll).to.be.calledWith('.foo');
+    });
+
+    it('returns an array of elements', () => {
+      let elements = findElements('.foo', dom);
+
+      expect(elements).to.be.an('array');
+      expect(elements).to.have.a.lengthOf(2);
     });
   });
 });
