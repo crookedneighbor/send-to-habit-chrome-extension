@@ -1,6 +1,6 @@
 import Q from 'q';
 
-const DEFAULT_DATA = {
+export const DEFAULT_DATA = {
   habitica: {
     uuid: '',
     token: '',
@@ -19,5 +19,11 @@ export function getChromeOptions (dataToGet = DEFAULT_DATA) {
     chrome.storage.sync.get(dataToGet, (data) => {
       resolve(data);
     });
+  });
+}
+
+export function logoutHabitica () {
+  return setChromeOptions({
+    habitica: DEFAULT_DATA.habitica,
   });
 }

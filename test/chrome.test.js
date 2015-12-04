@@ -1,6 +1,8 @@
 import {
   setChromeOptions,
   getChromeOptions,
+  logoutHabitica,
+  DEFAULT_DATA,
 } from '../src/js/chrome';
 
 describe('chrome', () => {
@@ -42,17 +44,18 @@ describe('chrome', () => {
     });
 
     it('gets chrome storage with default options if none are provided', () => {
-      let defaultOptions = {
-        habitica: {
-          uuid: '',
-          token: '',
-          endpoint: 'https://habitica.com/api/v2',
-        },
-      };
-
       return getChromeOptions().then(() => {
         expect(chrome.storage.sync.get).to.be.calledOnce;
-        expect(chrome.storage.sync.get).to.be.calledWith(defaultOptions);
+        expect(chrome.storage.sync.get).to.be.calledWith(DEFAULT_DATA);
+      });
+    });
+  });
+
+  describe('#logoutHabitica', () => {
+    it('resets chrome options', () => {
+      return logoutHabitica().then(() => {
+        expect(chrome.storage.sync.set).to.be.calledOnce;
+        expect(chrome.storage.sync.set).to.be.calledWith(DEFAULT_DATA);
       });
     });
   });
