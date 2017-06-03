@@ -5,13 +5,32 @@ block content
     .form-group.text-center
       h4 Habitica Settings
 
-    include ./options/_login-with-uuid.jade
+    #user-is-logged-in.hidden
+      .panel.panel-default
+        .panel-body.text-center
+          h3 You are logged in as #[b#logged-in-name]
+          #logout-btn.btn.btn-primary Log out
 
-    .from-group
-      .col-sm-offset-8.col-sm-4
-        #save.btn.btn-lg.btn-primary.btn-block Save Settings
+      .row: .col-xs-12.text-center
+        h3 Press alt + shift + s to send webpage to Habitica as a todo
 
-  .row: .col-xs-12.text-center
-    h3 Press alt + shift + s to send webpage to Habitica as a todo
+
+    #user-is-not-logged-in.hidden
+      .panel.panel-default
+        .panel-body
+          // if user is not already logged in
+          ul.nav.nav-tabs(role="tablist")
+            li.active(role='presentation' data-tab-target='login-with-username')
+              a(href='#login-with-username' role='tab' data-toggle='tab') Login With Username
+            li#tab-login-with-uuid(role='presentation', data-tab-target='login-with-uuid')
+              a(href="#login-with-uuid" aria-controls="home" role="tab" data-toggle="tab") Login With UUID
+
+          .tab-content
+            #login-with-username.tab-pane.active(role='tabpanel')
+              include ./options/_login-with-username.jade
+            #login-with-uuid.tab-pane(role='tabpanel')
+              include ./options/_login-with-uuid.jade
+
+            h5 Don't have an account? #[a(href='https://habitica.com/static/front') Sign up!]
 
 script(src='../js/options.js')
